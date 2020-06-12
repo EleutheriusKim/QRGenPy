@@ -10,7 +10,7 @@ Python을 사용하여 QR코드 생성
  
 ## Download
 
- - [최신 Release](./release/1.0.0.zip)
+ - [최신 Release](./raw/master/release/1.0.0.zip)
  
 ## 사용방법
 
