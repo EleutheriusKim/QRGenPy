@@ -12,6 +12,10 @@ Python을 사용하여 QR코드 생성
 
  - [최신 Release](https://github.com/EleutheriusKim/QRGenPy/raw/master/release/1.0.0.zip)
  
+## WEB실행
+
+- [웹에서 실행하기](https://gitpod.io/#https://github.com/EleutheriusKim/QRGenPy)
+ 
 ## 사용방법
 
  - 압축 풀기
