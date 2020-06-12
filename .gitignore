@@ -1,0 +1,6 @@
+app.spec
+QRtext.txt
+.vscode/*
+__pycache__/*
+dist/*
+build/*
