@@ -68,7 +68,7 @@ if __name__ == "__main__":
 
                     # 파일명에서 일부 특수문자 _로 replace (\, /, :, *, ?, ', ", >, <, |")
                     fileName = QRCode.replace('/', '_').replace('\\', '_').replace(':', '_').replace('*', '_').replace(
-                        '?', '_').replace('\'', '_').replace('\"', '_').replace('>', '_').replace('<', '_').replace('|', '_') + '.jpg'
+                        '?', '_').replace('\'', '_').replace('\"', '_').replace('>', '_').replace('<', '_').replace('|', '_') + '.png'
 
                     # 이미지 파일 URL로 다운로드 (상대경로)
                     urllib.request.urlretrieve(url, imgForderName + '/' + textFile + '/' + fileName)
