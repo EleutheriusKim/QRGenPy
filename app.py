@@ -7,8 +7,8 @@ import time
 import os
 import re
 
-qr_height = 400
-qr_width = 400
+qr_height = 300
+qr_width = 300
 
 source_dir = os.getcwd() + "/source"
 
@@ -17,7 +17,7 @@ if __name__ == "__main__":
     # 현재 시간 출력
     # format : 20200612_180125 (년도, 월, 일 _ 시간, 분, 초)
     curr_datetime = time.localtime()
-    timeString = "%04d%02d%02d_%02d%02d%02d" % (
+    datetime_string = "%04d%02d%02d_%02d%02d%02d" % (
         curr_datetime.tm_year, curr_datetime.tm_mon, curr_datetime.tm_mday,
         curr_datetime.tm_hour, curr_datetime.tm_min, curr_datetime.tm_sec
     )
@@ -26,7 +26,7 @@ if __name__ == "__main__":
     file_format = re.compile('.*[.]txt')
 
     # QR코드 출력 될 dir
-    image_directory_name = 'dist/QRIMG_' + timeString
+    image_directory_name = 'dist/QRIMG_' + datetime_string
 
     # 크기 300 X 300으로 고정, 조정 가능
     qrcode_generator_url = "https://zxing.org/w/chart?" \
@@ -69,15 +69,15 @@ if __name__ == "__main__":
             print('fileName -- ' + text_file)
             print()
             fileIO = open(source_dir + "/" + text_file, mode='rt', encoding='utf-8')
-            QRCodeList = fileIO.read().split('\n')
+            qrcode_list = fileIO.read().split('\n')
             fileIO.close()
 
-            for QRCode in QRCodeList:
-                if QRCode.strip() != '':
-                    url = qrcode_generator_url + urllib.parse.quote(QRCode)
+            for qrcode in qrcode_list:
+                if qrcode.strip() != '':
+                    url = qrcode_generator_url + urllib.parse.quote(qrcode)
 
                     # 파일명에서 일부 특수문자 _로 replace (\, /, :, *, ?, ', ", >, <, |")
-                    fileName = QRCode.replace('/', '_') \
+                    file_name = qrcode.replace('/', '_') \
                                    .replace('\\', '_') \
                                    .replace(':', '_') \
                                    .replace('*', '_') \
@@ -89,8 +89,8 @@ if __name__ == "__main__":
                                    .replace('|', '_') + '.png'
 
                     # 이미지 파일 URL로 다운로드 (상대경로)
-                    urllib.request.urlretrieve(url, image_directory_name + '/' + text_file + '/' + fileName)
-                    print('Create QRCode : ' + fileName)
+                    urllib.request.urlretrieve(url, image_directory_name + '/' + text_file + '/' + file_name)
+                    print('Create QRCode : ' + file_name)
             print()
         print('QR코드 생성이 완료되었습니다.')
         print('파일이름의 특수문자는 제거되었으나 QR코드는 정상적입니다.')
